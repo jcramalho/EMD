@@ -1,0 +1,46 @@
+extends layout
+
+block content
+    .w3-card-4
+        header(class="w3-container w3-teal")
+            h3 Registo de Novo EMD
+
+        form(class='w3-container' method='POST' action='/emd')
+            label(class="w3-text-teal")
+                b Data de realização do EMD
+            input(class='w3-input w3-border w3-border-large' type='text' name='dataExame')
+            label(class="w3-text-teal")
+                b Nome
+            input(class='w3-input w3-border w3-border-large' type='text' name='nome')
+            label(class="w3-text-teal")
+                b Data de nascimento
+            input(class='w3-input w3-border w3-border-large' type='text' name='dataNasc')
+            label(class="w3-text-teal")
+                b Localidade
+            input(class='w3-input w3-border w3-border-large' type='text' name='localidade')
+
+            h5(class="w3-text-teal")
+                b Federado
+            .w3-margin
+                input(class='w3-radio' type='radio' name='federado' value='true' checked)
+                label Sim
+            
+                input(class='w3-radio' type='radio' name='federado' value='false')
+                label Não
+            
+            label(class="w3-text-teal")
+                b Modalidade
+            input(class='w3-input w3-border w3-border-large' type='text' name='modalidade')
+
+            label(class="w3-text-teal")
+                b Resultado do EMD
+            input(class='w3-input w3-border w3-border-large' type='text' name='resultadoEMD')
+
+            label(class="w3-text-teal")
+                b Exame complementar
+            input(class='w3-input w3-border w3-border-large' type='text' name='exameComplementar')
+
+            input(type='submit' class='w3-btn w3-teal' value='Adicionar')
+
+        footer(class="w3-container w3-teal")
+            address Gerado por EMD :: 2019-Dezembro, jcr

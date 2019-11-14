@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    .w3-card-4
+        header(class="w3-container w3-teal")
+            h3 Registo adcionado com sucesso
+
+        .w3-container
+            p Exame de #{dados.nome} guardado com sucesso com o identificador #{dados._id}.
+
+        button(class='w3-button w3-block w3-border w3-border-teal' style='width:50%')
+            a(href='/') Voltar à lista de EMDs
+
+        footer(class="w3-container w3-teal")
+            address Gerado por EMD :: 2019-Dezembro, jcr

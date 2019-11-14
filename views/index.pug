@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    button(class='w3-btn w3-round-large w3-hover-teal w3-border w3-border-green')
+      a(href="/novoRegisto" id="novo") Registar
+    div(class="w3-card-4")
+      header(class="w3-container w3-teal")
+        h3 Lista de Exames Médicos Desportivos Registados
+      if lista.length > 0
+        div(class="w3-container")  
+          table(class="w3-table-all")
+            tr 
+              th Data
+              th Nome
+              th Modalidade
+              th Resultado
+            each e in lista
+              tr
+                td= e.dataExame
+                td= e.nome
+                td= e.modalidade
+                td= e.resultadoEMD
+      else
+        div(class="w3-container")
+          p Ainda não há exames registados...
+      footer(class="w3-container w3-teal")
+        address Gerado por EMD :: 2019-Dezembro, jcr
