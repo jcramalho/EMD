@@ -15,7 +15,7 @@ router.get('/novoRegisto', function(req, res){
 
 router.post('/emd', function(req, res){
   EMD.inserir(req.body)
-    .then(dados => res.render('novoRegisto', {dados: JSON.stringify(dados)}))
+    .then(dados => res.render('novoRegisto', {dados: dados}))
     .catch(e => res.render('error', {error: e}))
 })
 
