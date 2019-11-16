@@ -1,12 +1,16 @@
 version: "2"
 services:
  web:
+  container_name: emd-web-server
   build: ./
   ports:
-    - "8080:28000"
+    - "28000:28000"
   depends_on:
     - mongo
+  links:
+    - mongo
  mongo:
+  container_name: mongo-server
   image: mongo
   ports:
     - "27017:27017"
