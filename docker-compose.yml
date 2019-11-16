@@ -2,7 +2,7 @@ version: "2"
 services:
  web:
   container_name: emd-web-server
-  build: ./
+  image: zzglider/emd2019:Nov16
   ports:
     - "28000:28000"
   depends_on:
