@@ -3,6 +3,9 @@ extends layout
 block content
     button(class='w3-btn w3-round-large w3-hover-teal w3-border w3-border-green')
       a(href="/novoRegisto" id="novo") Registar
+
+    .w3-container(id="displayEMD")
+
     div(class="w3-card-4")
       header(class="w3-container w3-teal")
         h3 Lista de Exames Médicos Desportivos Registados
@@ -15,7 +18,7 @@ block content
               th Modalidade
               th Resultado
             each e in lista
-              tr
+              tr(id='e_'+e._id, class='emd', onclick="showEMD("+JSON.stringify(e)+")")
                 td= e.dataExame
                 td= e.nome
                 td= e.modalidade
