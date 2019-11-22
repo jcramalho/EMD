@@ -15,6 +15,7 @@ block content
             label Feminino
             input(class='w3-input w3-cell w3-border w3-border-large' type='text' name='dataNasc' placeholder='Data de nascimento')
             input(class='w3-input w3-cell w3-border w3-border-large' type='text' name='localidade' placeholder='Localidade')
+            input(class='w3-input w3-cell w3-border w3-border-large' type='text' name='contacto' placeholder='Contacto/email')
             label(class="w3-text-teal w3-cell") Federado
             h5(class="w3-text-teal")
             input(class='w3-radio' type='radio' name='federado' value='true' checked)
@@ -25,6 +26,11 @@ block content
             input(class='w3-input w3-border w3-border-large' type='text' name='clube' placeholder='Clube')
             input(class='w3-input w3-border w3-border-large' type='text' name='resultadoEMD' placeholder='Resultado do EMD')
             input(class='w3-input w3-border w3-border-large' type='text' name='exameComplementar' placeholder='Exame complementar')
+            label(class="w3-text-teal w3-cell") Pagamento
+            input(class='w3-radio' type='radio' name='pagamento' value='Sim' checked)
+            label Pago
+            input(class='w3-radio' type='radio' name='genero' value='Não')
+            label Não pago
 
             input(type='submit' class='w3-btn w3-teal' value='Adicionar')
 

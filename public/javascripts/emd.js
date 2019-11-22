@@ -8,13 +8,15 @@ function showEMD(e){
     var genero = $('<div><label>Género:</label><input type="text" value="' + e.genero + '"/></div>')
     var dataNasc = $('<div><label>Data de nascimento:</label><input type="text" value="' + e.dataNasc + '"/></div>')
     var localidade = $('<div><label>Localidade:</label><input type="text" value="' + e.localidade + '"/></div>')
+    var contacto = $('<div><label>Contacto:</label><input type="text" value="' + e.contacto + '"/></div>')
     var federado = $('<div><label>Federado:</label><input type="text" value="' + e.federado + '"/></div>')
     var modalidade = $('<div><label>Modalidade:</label><input type="text" value="' + e.modalidade + '"/></div>')
     var clube = $('<div><label>clube:</label><input type="text" value="' + e.clube + '"/>')
     var resultadoEMD = $('<div><label>Resultado:</label><input type="text" value="' + e.resultadoEMD + '"/></div>')
     var exameComplementar = $('<div><label>Exame complementar:</label><input type="text" value="' + e.exameComplementar + '"/></div>')
+    var pagamento = $('<div><label>Pago:</label><input type="text" value="' + e.pagamento + '"/></div>')
 
     $("#displayEMD").empty()
-    $("#displayEMD").append(dataExame, nome, genero, dataNasc, localidade, federado, modalidade, clube, resultadoEMD, exameComplementar)
+    $("#displayEMD").append(dataExame, nome, genero, dataNasc, localidade, contacto, federado, modalidade, clube, resultadoEMD, exameComplementar, pagamento)
     $("#displayEMD").modal()
 }
