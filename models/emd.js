@@ -6,11 +6,13 @@ var emdSchema = new mongoose.Schema({
     genero: String,
     dataNasc: String,
     localidade: String,
+    contacto: String,
     federado: Boolean,
     modalidade: String,
     clube: String,
     resultadoEMD: String,
-    exameComplementar: String
+    exameComplementar: String,
+    pagamento: String
   });
 
 module.exports = mongoose.model('emd', emdSchema)
