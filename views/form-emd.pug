@@ -5,34 +5,78 @@ block content
         header(class="w3-container w3-teal")
             h3 Registo de Novo EMD
 
-        form(class='w3-container' method='POST' action='/emd')
-            input(class='w3-input w3-cell w3-border w3-border-large' type='text' name='dataExame' placeholder='Data de realização do EMD')
-            input(class='w3-input w3-cell w3-border w3-border-large' type='text' name='nome' placeholder='Nome')
-            label(class="w3-text-teal w3-cell") Género
-            input(class='w3-radio' type='radio' name='genero' value='Masculino' checked)
-            label Masculino
-            input(class='w3-radio' type='radio' name='genero' value='Feminino')
-            label Feminino
-            input(class='w3-input w3-cell w3-border w3-border-large' type='text' name='dataNasc' placeholder='Data de nascimento')
-            input(class='w3-input w3-cell w3-border w3-border-large' type='text' name='localidade' placeholder='Localidade')
-            input(class='w3-input w3-cell w3-border w3-border-large' type='text' name='contacto' placeholder='Contacto/email')
-            label(class="w3-text-teal w3-cell") Federado
-            h5(class="w3-text-teal")
-            input(class='w3-radio' type='radio' name='federado' value='true' checked)
-            label Sim
-            input(class='w3-radio' type='radio' name='federado' value='false')
-            label Não
-            input(class='w3-input w3-border w3-border-large' type='text' name='modalidade' placeholder='Modalidade')
-            input(class='w3-input w3-border w3-border-large' type='text' name='clube' placeholder='Clube')
-            input(class='w3-input w3-border w3-border-large' type='text' name='resultadoEMD' placeholder='Resultado do EMD')
-            input(class='w3-input w3-border w3-border-large' type='text' name='exameComplementar' placeholder='Exame complementar')
-            label(class="w3-text-teal w3-cell") Pagamento
-            input(class='w3-radio' type='radio' name='pagamento' value='Sim' checked)
-            label Pago
-            input(class='w3-radio' type='radio' name='genero' value='Não')
-            label Não pago
-            hr(width="80%")
-            .w3-row.w3-margin
+        form.w3-container.w3-margin(class='w3-container' method='POST' action='/emd')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Data de realização do EMD
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='dataExame' placeholder='Introduza a data de realização do EMD')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Nome
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='nome' placeholder='Introduza o nome')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Género
+                .w3-col.s9
+                    input.w3-radio(type='radio' name='genero' value='Masculino' checked)
+                    label Masculino
+                    input.w3-radio(type='radio' name='genero' value='Feminino')
+                    label Feminino
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Data de nascimento
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='dataNasc' placeholder='Introduza a data de nascimento')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Localidade
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='localidade' placeholder='Introduza a localidade')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Contacto/email
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='contacto' placeholder='Introduza o contacto/email')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Federado
+                .w3-col.s9
+                    input.w3-radio(type='radio' name='federado' value='true' checked)
+                    label Sim
+                    input.w3-radio(type='radio' name='federado' value='false')
+                    label Não
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Modalidade
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='modalidade' placeholder='Introduza a modalidade')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Clube
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='clube' placeholder='Introduza o clube')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Resultado do EMD
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='resultadoEMD' placeholder='Introduza o resultado do EMD')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Exame complementar
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='exameComplementar' placeholder='Introduza exame complementar')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Pagamento
+                .w3-col.s9    
+                    input.w3-radio(type='radio' name='pagamento' value='Sim' checked)
+                    label Pago
+                    input.w3-radio(type='radio' name='genero' value='Não')
+                    label Não pago
+            
+            .w3-row.w3-margin-top
                 input.w3-btn.w3-teal(type='submit' value='Adicionar')
 
         footer(class="w3-container w3-teal")
