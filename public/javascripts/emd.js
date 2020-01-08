@@ -7,7 +7,8 @@ function showEMD(e){
     var nome = $('<div><label>Nome:</label><input type="text" value="' + e.nome + '"/></div>')
     var genero = $('<div><label>Género:</label><input type="text" value="' + e.genero + '"/></div>')
     var dataNasc = $('<div><label>Data de nascimento:</label><input type="text" value="' + e.dataNasc + '"/></div>')
-    var localidade = $('<div><label>Localidade:</label><input type="text" value="' + e.localidade + '"/></div>')
+    var nif = $('<div><label>NIF:</label><input type="text" value="' + e.nif + '"/></div>')
+    var morada = $('<div><label>Morada:</label><input type="text" value="' + e.morada + '"/></div>')
     var contacto = $('<div><label>Contacto:</label><input type="text" value="' + e.contacto + '"/></div>')
     var federado = $('<div><label>Federado:</label><input type="text" value="' + e.federado + '"/></div>')
     var modalidade = $('<div><label>Modalidade:</label><input type="text" value="' + e.modalidade + '"/></div>')
@@ -17,6 +18,6 @@ function showEMD(e){
     var pagamento = $('<div><label>Pago:</label><input type="text" value="' + e.pagamento + '"/></div>')
 
     $("#displayEMD").empty()
-    $("#displayEMD").append(dataExame, nome, genero, dataNasc, localidade, contacto, federado, modalidade, clube, resultadoEMD, exameComplementar, pagamento)
+    $("#displayEMD").append(dataExame, nome, genero, dataNasc, nif, morada, contacto, federado, modalidade, clube, resultadoEMD, exameComplementar, pagamento)
     $("#displayEMD").modal()
 }

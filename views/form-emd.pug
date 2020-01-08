@@ -31,9 +31,14 @@ block content
                     input.w3-input(type='text' name='dataNasc' placeholder='Introduza a data de nascimento')
             .w3-row.w3-margin-bottom
                 .w3-col.s3
-                    label.w3-text-teal Localidade
+                    label.w3-text-teal NIF
                 .w3-col.s9.w3-border
-                    input.w3-input(type='text' name='localidade' placeholder='Introduza a localidade')
+                    input.w3-input(type='text' name='nif' placeholder='Introduza o NIF')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Morada
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='morada' placeholder='Introduza a morada')
             .w3-row.w3-margin-bottom
                 .w3-col.s3
                     label.w3-text-teal Contacto/email
@@ -73,7 +78,7 @@ block content
                 .w3-col.s9    
                     input.w3-radio(type='radio' name='pagamento' value='Sim' checked)
                     label Pago
-                    input.w3-radio(type='radio' name='genero' value='Não')
+                    input.w3-radio(type='radio' name='pagamento' value='Não')
                     label Não pago
             
             .w3-row.w3-margin-top
