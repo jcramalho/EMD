@@ -5,7 +5,21 @@ const EMD = require('../controllers/emd')
 /* GET home page. */
 router.get('/', function(req, res, next) {
   EMD.listar()
-    .then(dados => res.render('index', {lista: dados}))
+    .then(dados => {
+      var mylista = dados.map(e => {
+        e.dataExame = e.dataExame.replace(" ","");
+        e.dataExame = e.dataExame.substring(6) + '-' + e.dataExame.substring(3,5) + '-' + e.dataExame.substring(0,2);
+        return e;
+      })
+      mylista.sort(function(a, b) {
+        if (a.dataExame < b.dataExame) {
+          return 1;
+        }
+        else
+          return -1;
+      });
+      res.render('index', {lista: mylista})
+    })
     .catch(e => res.render('error', {error: e}))
 });
 

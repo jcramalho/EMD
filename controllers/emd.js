@@ -4,6 +4,7 @@ var EMD = require('../models/emd')
 module.exports.listar = () => {
     return EMD
         .find()
+        .sort('-dataExame')
         .exec()
 }
 

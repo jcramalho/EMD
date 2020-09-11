@@ -9,6 +9,12 @@ router.get('/', function(req, res, next) {
     .catch(e => res.status(500).jsonp(e))
 });
 
+router.get('/:id', function(req, res, next) {
+  EMD.consultar(req.params.id)
+    .then(dados => res.jsonp(dados))
+    .catch(e => res.status(500).jsonp(e))
+});
+
 router.post('/emd', function(req, res){
   EMD.inserir(req.body)
     .then(dados => res.jsonp(dados))
