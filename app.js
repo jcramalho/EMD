@@ -4,9 +4,20 @@ var path = require('path');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/emd', {useNewUrlParser: true})
+/* mongoose.connect('mongodb://127.0.0.1:27017/emd', {useNewUrlParser: true})
   .then(()=> console.log('Mongo ready: ' + mongoose.connection.readyState))
-  .catch((erro)=> console.log('Mongo: erro na conexão: ' + erro))
+  .catch((erro)=> console.log('Mongo: erro na conexão: ' + erro)) */
+
+mongoose.connect('mongodb://127.0.0.1:27017/emd', 
+      { useNewUrlParser: true,
+        useUnifiedTopology: true,
+        serverSelectionTimeoutMS: 5000});
+  
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Erro de conexão ao MongoDB...'));
+db.once('open', function() {
+  console.log("Conexão ao MongoDB realizada com sucesso...")
+});
 
 var apiRouter = require('./routes/api');
 var indexRouter = require('./routes/index');
