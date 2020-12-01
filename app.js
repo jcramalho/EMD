@@ -25,6 +25,88 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+// Autenticação
+const { v4: uuidv4 } = require('uuid');
+
+var session = require('express-session');
+var FileStore = require('session-file-store')(session);
+
+var passport = require('passport')
+var LocalStrategy = require('passport-local').Strategy
+var axios = require('axios')
+var flash = require('connect-flash')
+var bcrypt = require('bcryptjs')
+//-----------------------------------
+
+
+// Configuração da estratégia local
+passport.use(new LocalStrategy(
+  {usernameField: 'email'}, (email, password, done) => {
+  axios.get('http://localhost:5003/utilizadores/' + email)
+    .then(dados => {
+      const user = dados.data
+      if(!user) { return done(null, false, {message: 'Utilizador inexistente!\n'})}
+      if(!bcrypt.compareSync(password, user.password)) { return done(null, false, {message: 'Password inválida!\n'})}
+      return done(null, user)
+  })
+  .catch(erro => done(erro))
+}))
+
+// Indica-se ao passport como serializar o utilizador
+passport.serializeUser((user,done) => {
+  console.log('Vou serializar o user: ' + JSON.stringify(user))
+  // Serialização do utilizador. O passport grava o utilizador na sessão aqui.
+  done(null, user.email)
+})
+  
+// Desserialização: a partir do id obtem-se a informação do utilizador
+passport.deserializeUser((email, done) => {
+  console.log('Vou desserializar o utilizador: ' + email)
+  axios.get('http://localhost:5003/utilizadores/' + email)
+    .then(dados => done(null, dados.data))
+    .catch(erro => done(erro, false))
+})
+
+// Autenticação com JWT---------------------------------------------
+var JWTStrategy = require('passport-jwt').Strategy
+var ExtractJWT = require('passport-jwt').ExtractJwt
+
+var extractFromSession = function(req){
+  var token = null
+  if(req && req.session) token = req.session.token
+  return token
+}
+
+var extractFromQS = function(req){
+  var token = null
+  token = req.query.access_token
+  return token
+}
+
+passport.use(new JWTStrategy({
+  secretOrKey: 'pri2019',
+  jwtFromRequest: ExtractJWT.fromExtractors([extractFromSession, extractFromQS])
+}, async (token, done) => {
+  try{
+    return done(null, token.user)
+  }
+  catch(error){
+    return done(error)
+  }
+}))
+
+// Configuração das sessões-----------------------------------------
+app.use(session({
+  genid: req => {
+  console.log('Dentro do middleware da sessão...')
+  console.log(req.sessionID)
+  return uuidv4()},
+  store: new FileStore(),
+  secret: 'emd@di',
+  resave: false,
+  saveUninitialized: true
+}));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -36,6 +118,12 @@ const corsOpts = {
     methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Accept', 'Authorization', 'Cache-Control', 'Content-Type', 'DNT', 'If-Modified-Since', 'Keep-Alive', 'Origin', 'User-Agent', 'X-Requested-With', 'Content-Length']
 }
+
+app.use(passport.initialize());
+app.use(passport.session());
+  
+app.use(flash());
+
 app.use(cors(corsOpts));
 
 app.use(logger('dev'));

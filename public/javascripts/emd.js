@@ -1,5 +1,29 @@
 $(()=>{
-
+    var myTable = $('#listaEMD').DataTable(
+        {
+            "language": {
+                "emptyTable": "Sem registos para apresentar...",
+                "info": "Mostrando a página _PAGE_ de _PAGES_ páginas",
+                "infoEmpty": "Não há registos para mostrar",
+                "infoFiltered": "(filtrados dum total de _MAX_ registos)",
+                "thousands": ".",
+                "lengthMenu": "Mostrando _MENU_ registos por página",
+                "search": "Procurar:",
+                "zeroRecords": "Não foram encontrados registos",
+                "paginate": {
+                    "first":      "Primeira",
+                    "last":       "Última",
+                    "next":       "Próxima",
+                    "previous":   "Anterior"
+                },
+                "aria": {
+                    "sortAscending":  ": ordenar ascendentemente",
+                    "sortDescending": ": ordenar descendentemente"
+                }
+            }
+        }
+    );
+    myTable.column( '0:visible' ).order( 'desc' ).draw();
 })
 
 function showEMD(e){

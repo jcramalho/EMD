@@ -78,4 +78,12 @@ router.get('/exportCSV', function(req, res){
     .catch(e => res.render('error', {error: e}))
 });
 
+function verificaAutenticacao(req,res,next){
+  if(req.isAuthenticated()){
+  //req.isAuthenticated() will return true if user is logged in
+    next();
+  } else{
+    res.redirect("/users/login");}
+}
+
 module.exports = router;
