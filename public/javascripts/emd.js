@@ -7,7 +7,7 @@ $(()=>{
                 "infoEmpty": "Não há registos para mostrar",
                 "infoFiltered": "(filtrados dum total de _MAX_ registos)",
                 "thousands": ".",
-                "lengthMenu": "Mostrando _MENU_ registos por página",
+                "lengthMenu": "Mostrando _MENU_ registos por página dum total de _MAX_",
                 "search": "Procurar:",
                 "zeroRecords": "Não foram encontrados registos",
                 "paginate": {
