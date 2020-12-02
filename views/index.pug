@@ -24,14 +24,14 @@ block content
                 th Operações
             tbody
               each e in lista
-                tr(id='e_'+e._id, class='emd', onclick="showEMD("+JSON.stringify(e)+")")
+                tr(id='e_'+e._id, class='emd', onclick="showEMD2("+JSON.stringify(e)+")")
                   td= e.dataExame
                   td= e.nome
                   td= e.modalidade
                   td= e.resultadoEMD
                   td= e.pagamento
                   td
-                    button.w3-btn.w3-teal.w3-round-large.w3-margin-right(onclick="showEMD("+JSON.stringify(e)+")") Ver
+                    button.w3-btn.w3-teal.w3-round-large.w3-margin-right(onclick="showEMD2("+JSON.stringify(e)+")") Ver
                     button.w3-btn.w3-teal.w3-round-large.w3-margin-right 
                       a(href="/editRegisto/" + e._id) Alterar
       else

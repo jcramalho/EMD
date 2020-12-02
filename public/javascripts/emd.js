@@ -45,3 +45,137 @@ function showEMD(e){
     $("#displayEMD").append(dataExame, nome, genero, dataNasc, nif, morada, contacto, federado, modalidade, clube, resultadoEMD, exameComplementar, pagamento)
     $("#displayEMD").modal()
 }
+
+function showEMD2(e){
+    var pagModal = $(`<div class="w3-card-4">
+        <header class="w3-container w3-teal">
+            <h3>Registo de: ${e.nome}</h3>
+        </header>
+        <form class="w3-container w3-margin">
+            <div class="w3-row w3-margin-bottom">
+                <div class="w3-col s3">
+                    <label class="w3-text-teal">Data de realização do EMD</label>
+                </div>
+                <div class="w3-col s9 w3-border">
+                    <input class="w3-input" type="text" value="${e.dataExame}" readonly>
+                </div>
+            </div>
+            
+            <div class="w3-row w3-margin-bottom">
+                <div class="w3-col s3">
+                    <label class="w3-text-teal">Nome</label>
+                </div>
+                <div class="w3-col s9 w3-border">
+                    <input class="w3-input" type="text" value="${e.nome}" readonly>
+                </div>
+            </div>
+            
+            <div class="w3-row w3-margin-bottom">
+                <div class="w3-col s3">
+                    <label class="w3-text-teal">Género</label>
+                </div>
+                <div class="w3-col s9">
+                    <input class="w3-input" type="text" value="${e.genero}" readonly>
+                </div>
+            </div>
+            
+            <div class="w3-row w3-margin-bottom">
+                <div class="w3-col s3">
+                    <label class="w3-text-teal">Data de nascimento</label>
+                </div>
+                <div class="w3-col s9 w3-border">
+                    <input class="w3-input" type="text" value="${e.dataNasc}" readonly>
+                </div>
+            </div>
+            
+            <div class="w3-row w3-margin-bottom">
+                <div class="w3-col s3">    
+                    <label class="w3-text-teal">NIF</label>
+                </div>
+                <div class="w3-col s9 w3-border">
+                    <input class="w3-input" type="text" value="${e.nif}" readonly>
+                </div>
+            </div>
+            
+            <div class="w3-row w3-margin-bottom">
+                <div class="w3-col s3">    
+                    <label class="w3-text-teal">Morada</label>
+                </div>
+                <div class="w3-col s9 w3-border">
+                    <input class="w3-input" type="text" value="${e.localidade}" readonly>
+                </div>
+            </div>
+            
+            <div class="w3-row w3-margin-bottom">
+                <div class="w3-col s3">     
+                    <label class="w3-text-teal">Contacto/email</label>
+                </div>
+                <div class="w3-col s9 w3-border">
+                    <input class="w3-input" type="text" value="${e.contacto}" readonly>
+                </div>
+            </div>
+            
+            <div class="w3-row w3-margin-bottom">
+                <div class="w3-col s3"> 
+                    <label class="w3-text-teal">Federado</label>
+                </div>
+                <div class="w3-col s9"> 
+                    <input class="w3-input" type="text" value="${e.federado}" readonly>
+                </div>
+            </div>
+            
+            <div class="w3-row w3-margin-bottom">
+                <div class="w3-col s3">
+                    <label class="w3-text-teal">Modalidade</label>
+                </div>
+                <div class="w3-col s9 w3-border"> 
+                    <input class="w3-input" type="text" value="${e.modalidade}" readonly>
+                </div>
+            </div>
+            
+            <div class="w3-row w3-margin-bottom">
+                <div class="w3-col s3">
+                    <label class="w3-text-teal">Clube</label>
+                </div>
+                <div class="w3-col s9 w3-border"> 
+                    <input class="w3-input" type="text" value="${e.clube}" readonly>
+                </div>
+            </div>
+            
+            <div class="w3-row w3-margin-bottom">
+                <div class="w3-col s3">
+                    <label class="w3-text-teal">Resultado do EMD</label>
+                </div>
+                <div class="w3-col s9 w3-border">
+                    <input class="w3-input" type="text" value="${e.resultadoEMD}" readonly>
+                </div>
+            </div>
+            
+            <div class="w3-row w3-margin-bottom">
+                <div class="w3-col s3">
+                    <label class="w3-text-teal">Exame complementar</label>
+                </div>
+                <div class="w3-col s9 w3-border">
+                    <input class="w3-input" type="text" name="exameComplementar" value="${e.exameComplementar}" readonly>
+                </div>
+            </div>
+
+            <div class="w3-row w3-margin-bottom">
+                <div class="w3-col s3">
+                    <label class="w3-text-teal">Pagamento</label>
+                </div><div class="w3-col s9">
+                    <input class="w3-input" type="text" value="${e.pagamento}" readonly>
+                </div>
+            </div>
+            
+        </form>
+        
+        <footer class="w3-container w3-teal">
+            <address>Gerado por EMD :: 2020-Dezembro, jcr</address>
+        </footer>
+    </div>`)
+
+    $("#displayEMD").empty()
+    $("#displayEMD").append( pagModal )
+    $("#displayEMD").modal()
+}
