@@ -7,7 +7,7 @@ $(()=>{
                 "infoEmpty": "Não há registos para mostrar",
                 "infoFiltered": "(filtrados dum total de _MAX_ registos)",
                 "thousands": ".",
-                "lengthMenu": "Mostrando _MENU_ registos por página dum total de _MAX_",
+                "lengthMenu": "Mostrando _MENU_ registos por página",
                 "search": "Procurar:",
                 "zeroRecords": "Não foram encontrados registos",
                 "paginate": {
@@ -102,7 +102,7 @@ function showEMD2(e){
                     <label class="w3-text-teal">Morada</label>
                 </div>
                 <div class="w3-col s9 w3-border">
-                    <input class="w3-input" type="text" value="${e.localidade}" readonly>
+                    <input class="w3-input" type="text" value="${e.localidade ? e.localidade : ''}" readonly>
                 </div>
             </div>
             

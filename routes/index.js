@@ -70,7 +70,9 @@ router.get('/exportCSV', function(req, res){
 
       csvWriter.writeRecords(mylista)     
         .then(() => {
-          res.download('EMD-export.csv', 'EMD-export.csv');
+          res.download( 'EMD-export.csv', 'EMD-export.csv', e => {
+            if(e) console.log('Erro no download: ' + e)
+          });
           console.log('Exportação realizada...');
         })
         .catch(erro => res.render('error', {error: erro}))
