@@ -3,6 +3,11 @@ var router = express.Router();
 const EMD = require('../controllers/emd')
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
+// New home page
+router.get('/main', function(req, res, next) {
+  res.render('main')
+})
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   EMD.listar()

@@ -4,10 +4,6 @@ var path = require('path');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 
-/* mongoose.connect('mongodb://127.0.0.1:27017/emd', {useNewUrlParser: true})
-  .then(()=> console.log('Mongo ready: ' + mongoose.connection.readyState))
-  .catch((erro)=> console.log('Mongo: erro na conexão: ' + erro)) */
-
 mongoose.connect('mongodb://127.0.0.1:27017/emd', 
       { useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -27,22 +23,21 @@ var app = express();
 
 // Autenticação
 const { v4: uuidv4 } = require('uuid');
-
 var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 
 var passport = require('passport')
 var LocalStrategy = require('passport-local').Strategy
-var axios = require('axios')
 var flash = require('connect-flash')
 var bcrypt = require('bcryptjs')
 //-----------------------------------
 
 
 // Configuração da estratégia local
+var User = require('./controllers/user')
 passport.use(new LocalStrategy(
   {usernameField: 'email'}, (email, password, done) => {
-  axios.get('http://localhost:5003/utilizadores/' + email)
+  User.consultar(email)
     .then(dados => {
       const user = dados.data
       if(!user) { return done(null, false, {message: 'Utilizador inexistente!\n'})}
@@ -62,7 +57,7 @@ passport.serializeUser((user,done) => {
 // Desserialização: a partir do id obtem-se a informação do utilizador
 passport.deserializeUser((email, done) => {
   console.log('Vou desserializar o utilizador: ' + email)
-  axios.get('http://localhost:5003/utilizadores/' + email)
+  User.consultar(email)
     .then(dados => done(null, dados.data))
     .catch(erro => done(erro, false))
 })
