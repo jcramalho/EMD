@@ -2,14 +2,30 @@ var express = require('express');
 var router = express.Router();
 const EMD = require('../controllers/emd')
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+var jwt = require('jsonwebtoken')
+
+function verificaToken(req, res, next){
+  if(req.cookies && req.cookies.token) 
+    jwt.verify(req.cookies.token, 'EMD20210125', function(e, payload){
+      if(e) res.render('error', {error: e, message: 'Não tem nível de acesso suficiente.'})
+      else next()
+    })
+  else
+    res.render('error', {error: {}, message: 'Tem de fazer login para aceder a esta página.'})
+}
 
 // New home page
 router.get('/main', function(req, res, next) {
   res.render('main')
 })
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/novoRegisto', verificaToken, function(req, res){
+  res.render('form-emd')
+})
+
+// Lista os EMD
+router.get('/', verificaToken, function(req, res, next) {
+  console.log('Cheguei à listagem...')
   EMD.listar()
     .then(dados => {
       var mylista = dados.map(e => {
@@ -29,29 +45,25 @@ router.get('/', function(req, res, next) {
     .catch(e => res.render('error', {error: e}))
 });
 
-router.get('/novoRegisto', function(req, res){
-  res.render('form-emd')
-})
-
-router.get('/editRegisto/:id', function(req,res){
+router.get('/editRegisto/:id', verificaToken, function(req,res){
   EMD.consultar(req.params.id)
     .then(dados => res.render('form-edit-emd', {emd: dados}))
     .catch(e => res.render('error', {error: e}))
 })
 
-router.post('/emd', function(req, res){
+router.post('/emd', verificaToken, function(req, res){
   EMD.inserir(req.body)
     .then(dados => res.render('novoRegisto', {dados: dados}))
     .catch(e => res.render('error', {error: e}))
 })
 
-router.post('/emdAlterado', function(req,res){
+router.post('/emdAlterado', verificaToken, function(req,res){
   EMD.alterar(req.body)
     .then(dados => res.render('registoAlterado', {dados: dados}))
     .catch(e => res.render('error', {error: e}))
 })
 
-router.get('/exportCSV', function(req, res){
+router.get('/exportCSV', verificaToken, function(req, res){
   EMD.listar()
     .then(dados => {
       var mylista = dados.map(e => {
@@ -85,12 +97,5 @@ router.get('/exportCSV', function(req, res){
     .catch(e => res.render('error', {error: e}))
 });
 
-function verificaAutenticacao(req,res,next){
-  if(req.isAuthenticated()){
-  //req.isAuthenticated() will return true if user is logged in
-    next();
-  } else{
-    res.redirect("/users/login");}
-}
 
 module.exports = router;

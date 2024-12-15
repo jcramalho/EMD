@@ -5,24 +5,29 @@ var jwt = require('jsonwebtoken')
 var User = require('../controllers/user')
 
 router.get('/login', function(req, res) {
-  console.log('Na cb do GET login...')
-  console.log(req.sessionID)
   res.render('login')
 })
   
 
 router.post('/registo', function(req, res) {
-  console.log('Na cb do POST registo...')
   User.inserir(req.body)
-    .then(dados => res.redirect('/'))
+    .then(dados => res.redirect('/main'))
     .catch(erro => res.render('error', {error: erro}))
 })
 
 router.post('/login', function(req, res) {
-  console.log('Na cb do POST login...')
-  console.log(JSON.stringify(req.body))
-  res.send('Login recebido e tratado...')
+  jwt.sign({ email: req.body.email, sub: "EMD"}, "EMD20210125", {expiresIn: "1d"}, 
+    function(e, token){
+      if(e) res.render('error', {error: e})
+      else {
+        res.cookie('token', token, {
+          expires: new Date(Date.now() + '1d'),
+          secure: false,
+          httpOnly: true
+        })
+        res.redirect('/')
+      }
+  })
 })
   
-
 module.exports = router;
